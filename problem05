@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+class dayofyear {
+    static int[][] days = {
+            {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
+            {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
+    };
+
+    static int isLeap(int year) {
+        return (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) ? 1 : 0;
+    }
+    static int sum(int a, int b){
+
+        return (a+b);
+    }
+}
+    public class problem05 extends dayofyear {
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+            int totalofyear = 0;
+            int totalofmonth = 0;
+
+            System.out.print("year : ");
+            int year = sc.nextShort();
+            System.out.print("month : ");
+            int month = sc.nextShort();
+            sc.close();
+
+            System.out.printf("[%d년 %d월]\n",year,month);
+            System.out.println("일 월 화 수 목 금 토");
+
+            for (int y=1; y<year; y++) {
+                if (dayofyear.isLeap(y) == 1) {
+                    totalofyear = (totalofyear + 366);
+                } else {
+                    totalofyear = (totalofyear + 365);
+                }
+            }
+            for (int m=0; m<month-1; m++) {
+                totalofmonth = (totalofmonth + dayofyear.days[dayofyear.isLeap(year)][m]);
+
+            }
+            int result = (dayofyear.sum(totalofyear,totalofmonth) % 7);
+
+            for (int b =0; b<=result; b++) {
+                System.out.printf("   ");
+            }
+            for (int f=1; f<=dayofyear.days[isLeap(year)][month-1];f++) {
+
+            if (f<10) System.out.printf("0");
+            System.out.printf("%d ", f);
+            if ((result+1+f)%7==0)
+            System.out.println();
+            }
+        }
+    }
