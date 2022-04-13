@@ -1,7 +1,9 @@
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class App {
+public class problem07 {
     public static void main(String[] args) {
 
         System.out.println("[로또 당첨 프로그램]");
@@ -21,10 +23,25 @@ public class App {
                 for(int k=0; k<i; k++) {
                     if (user[j][i]==user[j][k]){
                         j--;  break;
+                    }
+                }
+            }
+
+        }
+
+        //유저번호 정렬
+        for (int i = 0; i<us; i++){
+            for (int j=0; j<6; j++){
+                for (int k=j+1; k<6; k++){
+                    if(user[i][j]>user[i][k]){
+                        int s = user[i][j];
+                        user[i][j]=user[i][k];
+                        user[i][k] = s;
+                    }
                 }
             }
         }
-        }
+
 
         //로또번호 생성
 
@@ -39,9 +56,7 @@ public class App {
             }
         }
 
-
         //유저번호 출력
-
         for (int i= 0; i<us; i++) {
             switch (i) {
                 case 9:
@@ -74,20 +89,78 @@ public class App {
                 case 0:
                     System.out.printf("A   ");
             }
-                    for (int j=0;j<6; j++) {
-                        if (user[i][j] < 10) System.out.print("0");
-                        System.out.printf("%d ", user[i][j]);
-                    }
+
+
+
+            for (int j=0;j<6; j++) {
+                if (user[i][j] < 10) System.out.print("0");
+                System.out.printf("%d ", user[i][j]);
+            }
 
             System.out.println();
         }
 
 
         //로또번호 출력
+        Arrays.sort(num);
         System.out.println("[로또발표]");
+        System.out.print("    ");
         for (int i= 0; i<6; i++) {
             if (num[i]<10) System.out.print("0");
             System.out.printf("%d ", num[i]);
+        }
+        System.out.println();
+
+        //당첨 확인
+        System.out.println("[내 로또 결과]");
+        for (int i= 0; i<us; i++) {
+            switch (i) {
+                case 9:
+                    System.out.print("J   ");
+                    break;
+                case 8:
+                    System.out.printf("I   ");
+                    break;
+                case 7:
+                    System.out.printf("H   ");
+                    break;
+                case 6:
+                    System.out.printf("G   ");
+                    break;
+                case 5:
+                    System.out.printf("F   ");
+                    break;
+                case 4:
+                    System.out.printf("E   ");
+                    break;
+                case 3:
+                    System.out.printf("D   ");
+                    break;
+                case 2:
+                    System.out.printf("C   ");
+                    break;
+                case 1:
+                    System.out.printf("B   ");
+                    break;
+                case 0:
+                    System.out.printf("A   ");
+            }
+            for (int j=0;j<6; j++) {
+
+                if (user[i][j] < 10) System.out.print("0");
+                System.out.printf("%d ", user[i][j]);
+
+            }
+            int c = 0;
+            for (int j=0; j<6;j++){
+
+                if (num[j]==user[i][j]){
+                    c++;
+                }
+            }
+
+            System.out.printf(" ==> %d개 일치",c);
+            System.out.println();
         }
 
 
