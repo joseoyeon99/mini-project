@@ -1,1 +1,71 @@
-dhkls
+import java.util.Scanner;
+
+public class problem08 extends dayofyear {
+    public static void main(String[] args) {
+        System.out.println("[과세금액 계산 프로그램]");
+        System.out.print("연소득을 입력해 주세요. : ");
+        Scanner sc = new Scanner(System.in);
+        long pay = sc.nextLong();
+
+        if(pay<=12000000) {
+            System.out.printf("%12d *  6% = %12d", pay, pay / 100 * 6);
+        }
+        else if (pay<46000000) {
+            System.out.printf("%12d *  6% = %12d", 12000000, 72000);
+            pay = pay - 12000000;
+            System.out.printf("%12d * 15% = %12d", pay, pay / 100 * 15);
+        }
+        else if (pay<=88000000) {
+            System.out.printf("%12d *  6% = %12d", 12000000, 72000);
+            System.out.printf("%12d * 15% = %12d", 34000000, 5100000);
+            pay = pay - 46000000;
+            System.out.printf("%12d * 24% = %12d", pay, pay / 100 * 24);
+        }
+        else if (pay<=150000000) {
+            System.out.printf("%12d *  6% = %12d", 12000000, 72000);
+            System.out.printf("%12d * 15% = %12d", 34000000, 5100000);
+            System.out.printf("%12d * 24% = %12d", 42000000, 10080000);
+            pay = pay - 88000000;
+            System.out.printf("%12d * 35% = %12d", pay, pay / 100 * 35);
+        }
+        else if (pay<=300000000) {
+            System.out.printf("%12d *  6% = %12d", 12000000, 72000);
+            System.out.printf("%12d * 15% = %12d", 34000000, 5100000);
+            System.out.printf("%12d * 24% = %12d", 42000000, 10080000);
+            System.out.printf("%12d * 35% = %12d", 62000000, 52500000);
+            pay = pay - 150000000;
+            System.out.printf("%12d * 38% = %12d", pay, pay / 100 * 38);
+        }
+        else if (pay<=500000000) {
+            System.out.printf("%12d *  6% = %12d", 12000000, 72000);
+            System.out.printf("%12d * 15% = %12d", 34000000, 5100000);
+            System.out.printf("%12d * 24% = %12d", 42000000, 10080000);
+            System.out.printf("%12d * 35% = %12d", 62000000, 52500000);
+            System.out.printf("%12d * 38% = %12d", 150000000, 42000000);
+            pay = pay - 300000000;
+            System.out.printf("%12d * 40% = %12d", pay, pay / 100 * 40);
+        }
+        else if (pay<=1000000000) {
+            System.out.printf("%12d *  6% = %12d", 12000000, 72000);
+            System.out.printf("%12d * 15% = %12d", 34000000, 5100000);
+            System.out.printf("%12d * 24% = %12d", 42000000, 10080000);
+            System.out.printf("%12d * 35% = %12d", 62000000, 52500000);
+            System.out.printf("%12d * 38% = %12d", 150000000, 42000000);
+            System.out.printf("%12d * 40% = %12d", 300000000, 120000000);
+            pay = pay - 500000000;
+            System.out.printf("%12d * 42% = %12d", pay, pay / 100 * 42);
+        }
+        else {
+            System.out.printf("%12d *  6% = %12d", 12000000, 72000);
+            System.out.printf("%12d * 15% = %12d", 34000000, 5100000);
+            System.out.printf("%12d * 24% = %12d", 42000000, 10080000);
+            System.out.printf("%12d * 35% = %12d", 62000000, 52500000);
+            System.out.printf("%12d * 38% = %12d", 150000000, 42000000);
+            System.out.printf("%12d * 40% = %12d", 300000000, 120000000);
+            System.out.printf("%12d * 42% = %12d", 500000000, 210000000);
+            pay = pay - 1000000000;
+            System.out.printf("%12d * 45% = %12d", pay, pay / 100 * 45);
+        }
+        
+    }
+}
